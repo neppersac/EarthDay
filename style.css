@@ -1,0 +1,132 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #87CEEB;
+    color: #fff;
+    padding: 80px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 700;
+    transition: 0.5s ease-in-out;
+    text-shadow: 1px 1px var(--shadow-colors);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --texts: #333;
+    --background: #fdfdfd;
+    --background-semi: #f6f6f6c0;
+    --background-card: #f8f8f8;
+    --shadow-colors: #33333380;
+    --color-line: #33333340;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px auto;
+    max-width: 800px; /* Ajuste conforme necessário */
+}
+
+article {
+    flex: 0 1 calc(30% - 20px); /* Calcula a largura de cada coluna */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-shadow: 4px 4px 8px 1px #87CEEB;
+}
+
+/* Ajuste para dispositivos móveis */
+@media screen and (max-width: 600px) {
+    section {
+        flex-direction: column; /* Altera para uma coluna */
+    }
+
+    article {
+        flex: 1 0 auto; /* Volta para uma coluna completa */
+    }
+}
+
+/* Estilo das imagens */
+.article-image {
+    border-radius: 5px;
+    width: 100%; /* Garante que a imagem ocupe toda a largura do article */
+    height: auto; /* Permite que a altura seja ajustada automaticamente, mantendo a proporção original */
+    max-height: 200px; /* Altura máxima para garantir que as imagens não fiquem muito grandes */
+    object-fit: cover; /* Mantém a proporção da imagem e corta o excesso */
+}
+
+h2 {
+    color: #34495e;
+}
+
+.action-call {
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.action-call a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.action-call a:hover {
+    background-color: #fff;
+    color: #3498db;
+}
+
+.testimonial, .events {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.testimonial p:first-child {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+/* Estilo do rodapé */
+footer {
+    background-color: #34495e;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilo das listas */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Estilo dos links */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
