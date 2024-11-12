@@ -1,55 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earth Day</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ForeSight</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link para o CSS externo -->
 </head>
-<body>            
+<body>
+    <!-- Cabeçalho -->
     <header>
-        <h1>Welcome to Our Earth Day Celebration!</h1>
-    </header>
-    
-    <section>
-        <article class="facts">
-            <h2>Did You Know?</h2>
-            <p>Earth Day was first celebrated on April 22, 1970, and now includes a wide range of events coordinated globally by EARTHDAY.ORG including 1 billion people in more than 193 countries.</p>
-        </article>
-        <article>
-            <h2>Why Celebrate Earth Day?</h2>
-            <p>Earth Day is more than just a single day — April 22. It's a day to remind us to take action in our communities and beyond, to protect the environment, restore damaged ecosystems, and live a more sustainable life.</p>
-        </article>
-        <article>
-            <h2>How You Can Help</h2>
-            <p>Join us in making a difference! Here are some ways you can contribute to preserving our planet:</p>
-            <ul>
-                <li>Reduce, reuse, and recycle.</li>
-                <li>Volunteer for cleanups in your community.</li>
-                <li>Conserve water and electricity.</li>
-                <li>Plant a tree.</li>
-                <li>Educate others about environmental conservation.</li>
-            </ul>
-        </article>
-        <div class="action-call">
-            <h2>Take Action Now</h2>
-            <p>Join our Earth Day quiz to test your knowledge and learn more about what you can do to help our planet!</p>
-            <a href="#">Start the Quiz!</a>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo" class="logo-img">
+            <h1>ForeSight - TimeSeries Forecasting System</h1>
         </div>
-    </section>
-    <div class="testimonial">
-        <h2>Inspiration Corner</h2>
-        <p>"The Earth does not belong to us: we belong to the Earth." - Marlee Matlin</p>
-        <p>This Earth Day, let's remember we are part of a larger ecosystem and our actions have a profound impact on our planet.</p>
-    </div>
-        <div class="events">
-        <h2>Join an Event</h2>
-        <p>Participate in local and global Earth Day events to take action towards a sustainable future. Check out <a href="#">events near you</a>.</p>
-    </div>
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#importar-dados">Importar Dados</a>
+            <a href="#modelos">Modelos de Previsão</a>
+            <a href="#analise-resultados">Análise de Resultados</a>
+            <a href="#configuracoes">Configurações</a>
+            <a href="#perfil">Perfil</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Barra Lateral -->
+        <aside class="sidebar">
+            <h2>Filtros de Dados</h2>
+            <label for="periodo">Período:</label>
+            <input type="date" id="data-inicial"> a <input type="date" id="data-final"><br><br>
+
+            <label for="regioes">Regiões:</label>
+            <select id="regioes">
+                <option value="todas">Todas</option>
+                <option value="regiao1">Região 1</option>
+                <option value="regiao2">Região 2</option>
+            </select><br><br>
+
+            <label for="variaveis">Variáveis:</label>
+            <select id="variaveis">
+                <option value="co2">CO₂</option>
+                <option value="temperatura">Temperatura</option>
+            </select><br><br>
+
+            <label for="modelos">Modelo:</label>
+            <select id="modelos">
+                <option value="arima">ARIMA</option>
+                <option value="suavizacao">Suavização Exponencial</option>
+                <option value="ambos">Todos</option>
+            </select><br><br>
+            
+            <button onclick="atualizarDados()">Atualizar Dados</button>
+        </aside>
+
+        <!-- Área Principal -->
+        <section class="content">
+            <!-- Visão Geral dos Dados -->
+            <div class="data-overview">
+                <h2>Visão Geral dos Dados</h2>
+                <canvas id="dataChart"></canvas> <!-- Gráfico de séries temporais -->
+            </div>
+
+            <!-- Configuração de Modelos de Previsão -->
+            <div class="model-configuration">
+                <h2>Configuração de Modelos de Previsão</h2>
+                <label for="model-type">Tipo de Modelo:</label>
+                <select id="model-type">
+                    <option value="arima">ARIMA</option>
+                    <option value="exponential">Suavização Exponencial</option>
+                    <option value="lstm">LSTM</option>
+                </select><br><br>
+
+                <label for="parametros">Parâmetros:</label>
+                <input type="text" id="parametros" placeholder="Definir parâmetros do modelo"><br><br>
+                
+                <button onclick="executarModelo()">Executar Modelo</button>
+                <button onclick="salvarConfiguracao()">Salvar Configuração</button>
+            </div>
+
+            <!-- Análise dos Resultados -->
+            <div class="results-analysis">
+                <h2>Análise dos Resultados</h2>
+                <div class="metrics">
+                    <p><strong>MAE:</strong> 1.23</p>
+                    <p><strong>RMSE:</strong> 2.45</p>
+                    <p><strong>MAPE:</strong> 10%</p>
+                </div>
+                
+                <!-- Gráficos de Erros e Previsão -->
+                <h3>Previsão com Suavização Exponencial</h3>
+                <img src="images/ets.png" alt="Gráfico de Previsão de Suavização Exponencial" class="forecast-chart">
+
+                <h3>Previsão com ARIMA</h3>
+                <img src="images/arima.png" alt="Gráfico de Previsão ARIMA" class="forecast-chart">
+
+                <button onclick="downloadResultados()">Baixar Resultados</button>
+            </div>
+
+            <!-- Seção de Anotações -->
+            <div class="notes">
+                <h2>Anotações</h2>
+                <textarea id="comentarios" placeholder="Insira suas observações aqui"></textarea>
+                <button onclick="salvarAnotacao()">Salvar Anotação</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
     <footer>
-        <p>Happy Earth Day! Together, we can make a difference.</p>
+        <p>&copy; 2024 TimeSeries Forecasting System - Todos os direitos reservados</p>
+        <p>Versão 1.0.0</p>
     </footer>
-    
-    <script src="script.js"></script>
-    </body>
+
+    <script src="script.js"></script> <!-- Link para o JavaScript externo -->
+</body>
 </html>
